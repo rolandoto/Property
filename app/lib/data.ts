@@ -21,11 +21,11 @@ export async function fetchRevenue() {
     setTimeout(resolve, 3000)
    })
 
-    const data = await sql<Revenue[]>`SELECT * FROM revenue`;
+  const data = await sql<Revenue[]>`SELECT * FROM revenue`;
 
     // console.log('Data fetch completed after 3 seconds.');
 
-    return data;
+  return data;
   } catch (error) {
     console.error('Database Error:', error);
     throw new Error('Failed to fetch revenue data.');
@@ -33,6 +33,9 @@ export async function fetchRevenue() {
 }
 
 export async function fetchLatestInvoices() {
+  await new Promise((resolve,re) => {
+    setTimeout(resolve, 1000)
+   })
   try {
     const data = await sql<LatestInvoiceRaw[]>`
       SELECT invoices.amount, customers.name, customers.image_url, customers.email, invoices.id
