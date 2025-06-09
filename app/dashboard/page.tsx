@@ -8,7 +8,6 @@ import { LatestInvoicesSkeleton, RevenueChartSkeleton } from "../ui/skeletons"
 
 export default  async function Page() {
 
-
     const {totalPaidInvoices,totalPendingInvoices,numberOfInvoices,numberOfCustomers} = await fetchCardData()
 
     return(
@@ -29,7 +28,6 @@ export default  async function Page() {
           <Suspense fallback={<LatestInvoicesSkeleton />} >
             <LatestInvoices  /> 
           </Suspense>
-         
         </div>
       </main>
     )
