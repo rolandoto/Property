@@ -7,6 +7,7 @@ export default async function LatestInvoices() {
 
   const latestInvoices = await fetchLatestInvoices()
 
+
   return (
     <div className="flex w-full flex-col md:col-span-4">
       <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
@@ -23,7 +24,7 @@ export default async function LatestInvoices() {
                 className={clsx(
                   'flex flex-row items-center justify-between py-4',
                   {
-                    'border-t': i !== 0,
+                    'border-t border-t-400': i !== 0,
                   },
                 )}
               >

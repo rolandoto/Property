@@ -5,6 +5,7 @@ import LatestInvoices from "../ui/dashboard/latest-invoices"
 import RevenueChart from "../ui/dashboard/revenue-chart"
 import { lusitana } from "../ui/font"
 import { LatestInvoicesSkeleton, RevenueChartSkeleton } from "../ui/skeletons"
+import { notFound } from 'next/navigation';
 
 export default  async function Page() {
 

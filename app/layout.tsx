@@ -11,9 +11,6 @@ export default function RootLayout({
     <html lang="en">
         <body  className={`${monstserrat.className} antialiased `}>
           {children}
-          <footer className="py-10 flex  justify-center items-center">
-            hecho con amor por la gente de vercel
-          </footer>
         </body>
     </html>
   );

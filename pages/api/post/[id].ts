@@ -13,8 +13,6 @@ type Result = {
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { id } = req.query;
 
-  console.log(id)
-
   db.query(
     'SELECT * FROM sub_categorias WHERE ID = ? ORDER BY ID DESC',
     [id],

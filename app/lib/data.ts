@@ -73,7 +73,7 @@ export async function fetchCardData() {
       invoiceStatusPromise,
     ]);
 
-    console.log(data)
+
     const numberOfInvoices = Number(data[0][0].count ?? '0');
     const numberOfCustomers = Number(data[1][0].count ?? '0');
     const totalPaidInvoices = formatCurrency(data[2][0].paid ?? '0');
@@ -92,12 +92,10 @@ export async function fetchCardData() {
 }
 
 const ITEMS_PER_PAGE = 6;
-export async function fetchFilteredInvoices(
-  query: string,
-  currentPage: number,
-) {
+export async function fetchFilteredInvoices(query: string,currentPage: number,) {
+  
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
-
+ 
   try {
     const invoices = await sql<InvoicesTable[]>`
       SELECT
