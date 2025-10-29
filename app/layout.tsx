@@ -1,6 +1,8 @@
 
-import { monstserrat } from "./ui/font";
+
+import { FilterBar } from "./ui/FilterBar";
 import "./ui/global.css"
+import Header from "./ui/header";
 
 export default function RootLayout({
   children,
@@ -9,7 +11,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-        <body  className={`${monstserrat.className} antialiased `}>
+        <body  className={`$antialiased `}>
+          <Header /> 
+          <FilterBar />
           {children}
         </body>
     </html>

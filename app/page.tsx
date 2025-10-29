@@ -1,43 +1,22 @@
-import AcmeLogo from '@/app/ui/acme-logo';
-import { ArrowRightIcon } from '@heroicons/react/24/outline';
-import Image from 'next/image';
-import Link from 'next/link';
-import styles from './ui/home.module.css';
+import { Suspense } from "react";
+import {ProductCardsSkeleton } from "./ui/skeletons";
+import PropertyList from "./ui/Property";
 
-export default function Page() {
+export default  async function Page({searchParams}:{searchParams:{query?:string,page?:string ,   minprice?: string;maxprice?: string;}}) {
+
+ const query = (searchParams?.query) || ""
+ const minprice=  (searchParams?.minprice) || ""
+ const maxprice =  (searchParams?.maxprice) || ""
+
   return (
-    <main className="flex min-h-screen flex-col p-6">
-      <div className="flex h-20 shrink-0 items-end rounded-lg bg-blue-500 p-4 md:h-52">
-        <div className={styles.shape}>
-       
-        </div>
-      </div>
-      <div className="mt-4 flex grow flex-col gap-4 md:flex-row">
-        <div className="flex flex-col justify-center gap-6 rounded-lg bg-gray-50 px-6 py-10 md:w-2/5 md:px-20">
-          <p className={`text-xl text-gray-800 md:text-3xl md:leading-normal`}>
-            <strong>Welcome to Acme.</strong> This is the example for the{' '}
-            <a href="https://nextjs.org/learn/" className="text-blue-500">
-              Next.js Learn Course
-            </a>
-            , brought to you by Vercel.
-          </p>
-          <Link
-            href="/login"
-            className="flex items-center gap-5 self-start rounded-lg bg-blue-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-400 md:text-base"
-          >
-            <span>Log in</span> <ArrowRightIcon className="w-5 md:w-6" />
-          </Link>
-        </div>
-        <div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12">
-            <Image width={1000}
-                height={760} src="/hero-desktop.png" alt="screenshop" 
-                className='hidden md:block'/>
-
-            <Image width={560}
-                height={620} src="/hero-mobile.png" alt="screenshop" 
-                className='block md:hidden'/>
-        </div>
-      </div>
+     <main className=" mx-auto px-6 py-8">
+      <h2 className="text-sm text-gray-500 mb-2">RESULTADO DE LA BÚSQUEDA:</h2>
+      <h1 className="text-3xl font-bold mb-4">{query}</h1>
+       <Suspense   key={query} fallback={<ProductCardsSkeleton />} >
+         <div className="grid grid-cols-2 lg:grid-cols-4  ">
+              <PropertyList minprice={minprice}  maxprice={maxprice}  query={query}  />
+           </div>
+        </Suspense>
     </main>
   );
 }

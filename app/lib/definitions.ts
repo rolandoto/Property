@@ -1,7 +1,4 @@
-// This file contains type definitions for your data.
-// It describes the shape of the data, and what data type each property should accept.
-// For simplicity of teaching, we're manually defining these types.
-// However, these types are generated automatically if you're using an ORM such as Prisma.
+
 export type User = {
   id: string;
   name: string;
@@ -94,4 +91,61 @@ export type InvoiceForm = {
   customer_id: string;
   amount: number;
   status: 'pending' | 'paid';
+};
+
+
+export interface Images {
+  idPropertyImage: string;
+  file: string;
+  enabled: boolean;
+
+}
+
+
+
+export interface Property {
+  idProperty: string;
+  name: string;
+  address: string;
+  price: number;
+  codeInternal: string;
+  year: number;
+  owner: Owner;
+  priceRentFormatted: string;
+  images: Images[];
+}
+
+
+type Owner = {
+  idOwner: string;
+  name: string;
+  address: string;
+  photo: string;
+  birthday: string;
+};
+
+type PropertyImage = {
+  idPropertyImage: string;
+  file: string;
+  enabled: boolean;
+};
+
+type PropertyTrace = {
+  idPropertyTrace: string;
+  dateSale: Date;
+  name: string;
+  value: number;
+  tax: number;
+};
+
+export type PropertyBYId = {
+  idProperty: string;
+  name: string;
+  address: string;
+  price: number;
+  codeInternal: string;
+  year: number;
+  owner: Owner;
+  images: PropertyImage[];
+  traces: PropertyTrace[];
 };
